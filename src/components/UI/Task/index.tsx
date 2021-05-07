@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme) => ({
     paper : {
         margin : `${theme.spacing(1)}px 0 10px 0 `,
         padding : theme.spacing(2) ,
+        width : "100%" ,
         transition : ".3s ease" ,
         '&:hover' : {
             transition : ".3s ease" ,
@@ -21,18 +22,6 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-const getBadge = (status : TaskStatus) => {
-    switch (status) {
-        case TaskStatus.DELETED:
-            return <span className={"badge bg-danger"}>Deleted</span>
-        case TaskStatus.DOING:
-            return <Chip color={"primary"} label={"Doing"} variant={"outlined"} size={"small"}/>
-        case TaskStatus.DONE:
-            return <span className={"badge bg-success"}>Done</span>
-        case TaskStatus.TODO:
-            return <span className={"badge bg-warning"}>Todo</span>
-    }
-}
 
 function Task({task , setEditTask}: Props) {
 
