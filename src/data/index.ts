@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const API_BASE_URL = `http://localhost:3000`;
-
+export interface CustomObject {[key : string] : any}
 export enum TaskStatus {
     TODO = 'todo',
     DOING = 'doing',
@@ -9,7 +9,7 @@ export enum TaskStatus {
     DELETED = 'deleted',
 }
 export interface Task {
-    _id : string,
+    _id ?: string,
     title : string,
     desc : string;
     status : TaskStatus

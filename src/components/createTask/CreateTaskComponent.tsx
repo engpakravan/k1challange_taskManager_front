@@ -1,40 +1,25 @@
-import React , {useState} from 'react';
-import {Task, TaskStatus} from "../../data";
+import React from 'react';
+import {TaskStatus} from "../../data";
+import {useFormik} from "formik";
+import {Input} from "../UI/Form/Input";
+import {Textarea} from "../UI/Form/Textarea";
+import {SelectEnum} from "../UI/Form/SelectEnum";
+import {Button, ButtonTypes} from "../UI/Button";
 
 type Props = {
-    taskData : Omit<Task , "_id"> ,
-    setTaskData : React.Dispatch<React.SetStateAction<Omit<Task, "_id">>>
+    formik : Pick<ReturnType<typeof useFormik>, "validateForm" | "handleSubmit" | "setFieldValue" | "errors" | "touched" | "handleChange" | "handleBlur" | "initialValues">
 };
 
-export function CreateTaskComponent({taskData , setTaskData}: Props) {
+export function CreateTaskComponent({formik}: Props) {
 
     return (
-        <>
-            <div className="mb-3 row">
-                <label className="col-sm-2 col-form-label">Task Title : </label>
-                <div className="col-sm-10">
-                    <input type="text" value={taskData.title || ""} className="form-control" onChange={(e) => {
-                        setTaskData({ ...taskData , title : e.target.value})
-                    }}/>
-                </div>
-            </div>
+        <form onSubmit={formik.handleSubmit}>
+            <Input label={"Title"} name={"title"} type={"text"} formik={formik}/>
+            <Textarea label={"Desc"} name={"desc"} formik={formik}/>
 
-            <div className="mb-3 row">
-                <label className="col-sm-2 col-form-label">Task Desc : </label>
-                <div className="col-sm-10">
-                    <textarea className="form-control" rows={10} onChange={(e) => {
-                        setTaskData({ ...taskData , desc : e.target.value})
-                    }} value={taskData.desc}/>
-                </div>
-            </div>
+            <SelectEnum label={"Status"} name={"status"} enumData={Object.values(TaskStatus)} formik={formik}/>
 
-            <select className="form-select mb-2" aria-label="Default select example" onChange={(e) => {setTaskData({...taskData, status: e.target.value as TaskStatus})}}>
-                {
-                    Object.values(TaskStatus).map((taskStatus , index) =>
-                        <option selected={taskData.status === taskStatus}>{taskStatus}</option>
-                    )
-                }
-            </select>
-        </>
+            <Button variant={ButtonTypes.Success} title={"Submit"} type={"submit"}/>
+        </form>
     );
 };

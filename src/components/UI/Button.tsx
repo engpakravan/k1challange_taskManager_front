@@ -12,12 +12,13 @@ export enum ButtonTypes {
 type Props = {
     variant : ButtonTypes,
     title : string
-    handler : () => any,
-    className ?: string
+    handler ?: () => any,
+    className ?: string ,
+    type ?: "submit" | "button" | "reset"
 };
 
 export function Button(props: Props) {
     return (
-        <button onClick={props.handler} className={`btn btn-${props.variant} ${props.className}`}>{props.title}</button>
+        <button type={props.type} onClick={props.handler} className={`btn btn-${props.variant} ${props.className}`}>{props.title}</button>
     );
 };
