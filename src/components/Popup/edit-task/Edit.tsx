@@ -1,13 +1,13 @@
 // @flow
 import React, {useEffect} from 'react';
-import './edit.css'
-import {CustomObject, getTask, postUpdate, Task, Task as ITask, TaskStatus} from "../../data";
+import {CustomObject, getTask, postUpdate, Task, Task as ITask, TaskStatus} from "../../../data";
 import {useHistory} from "react-router-dom";
-import {ROUTE_HOME} from "../../data/route";
-import {CreateTaskComponent} from "../createTask/CreateTaskComponent";
+import {ROUTE_HOME} from "../../../data/route";
 import {useFormik} from "formik";
 import * as yup from "yup";
-import {i18next} from "../../lib/i18n";
+import {i18next} from "../../../lib/i18n";
+import {Popup} from "../popup";
+import {CreateTaskComponent} from "../../createTaskComponent";
 
 type Props = {
     setEditTask : React.Dispatch<React.SetStateAction<any>> ,
@@ -40,19 +40,12 @@ export function EditTask(props: Props) {
         }
     })
 
-    const handleClose = () => {
-        props.setEditTask({status : false , id : ""})
-    }
-
     return (
-        <div className={"custom-modal pt-5"}>
-            <div className="content-modal container">
-                <span className="close-modal" onClick={handleClose}>&times;</span>
+        <Popup setEditTask={props.setEditTask}>
 
-                {/*@ts-ignore*/}
-                <CreateTaskComponent formik={formik}/>
+            {/*@ts-ignore*/}
+            <CreateTaskComponent formik={formik}/>
 
-            </div>
-        </div>
+        </Popup>
     );
 }

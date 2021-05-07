@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {Task as ITask} from "../../data";
-import Task from "../UI/Task";
+import {Task as ITask} from "../data";
+import Task from "./UI/Task";
 import {useState} from "react";
-import {EditTask} from "./Edit";
+import {EditTask} from "./Popup/edit-task/Edit";
 
 type Props = {
     tasks : Array<ITask>

@@ -1,10 +1,10 @@
 import React from 'react';
-import {TaskStatus} from "../../data";
+import {TaskStatus} from "../data";
 import {useFormik} from "formik";
-import {Input} from "../UI/Form/Input";
-import {Textarea} from "../UI/Form/Textarea";
-import {SelectEnum} from "../UI/Form/SelectEnum";
-import {Button, ButtonTypes} from "../UI/Button";
+import {Input} from "./UI/Form/Input";
+import {Textarea} from "./UI/Form/Textarea";
+import {SelectEnum} from "./UI/Form/SelectEnum";
+import {Button, ButtonTypes} from "./UI/Button";
 
 type Props = {
     formik : Pick<ReturnType<typeof useFormik>, "validateForm" | "handleSubmit" | "setFieldValue" | "errors" | "touched" | "handleChange" | "handleBlur" | "initialValues">

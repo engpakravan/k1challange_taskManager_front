@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import {Home} from "./containers/home";
+import {HomeContainer} from "./containers/homeContainer";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import {
     BrowserRouter as Router,
@@ -12,20 +12,25 @@ import {
 } from "react-router-dom";
 import {CreateTaskContainer} from "./containers/createTaskContainer";
 import {ROUTE_CREATE_TASK, ROUTE_HOME} from "./data/route";
+import {QueryClient, QueryClientProvider} from "react-query";
+
+const queryClient = new QueryClient()
 
 ReactDOM.render(
   <React.StrictMode>
+      <QueryClientProvider client={queryClient} >
       <Router>
           <div className="container bg-white p-3 mt-3 shadow-lg">
               <Switch>
 
-                  <Route path={ROUTE_HOME} exact><Home /></Route>
+                  <Route path={ROUTE_HOME} exact><HomeContainer /></Route>
 
                   <Route path={ROUTE_CREATE_TASK}><CreateTaskContainer /></Route>
 
               </Switch>
           </div>
       </Router>
+      </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

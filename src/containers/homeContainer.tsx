@@ -1,29 +1,26 @@
 // @flow
 import * as React from 'react';
 import {useEffect, useState} from 'react';
-import {HomeComponent} from "../components/home";
+import {HomeComponent} from "../components/homeComponent";
 import {getTasks, Task} from "../data";
 import {LinkButton, ButtonTypes} from "../components/UI/LinkButton";
+import {useQuery} from "react-query";
 
 type Props = {
 
 };
 
-export function Home(props: Props) {
+export function HomeContainer(props: Props) {
 
-    const [tasks , setTasks] = useState<Array<Task>>()
-
-    useEffect(() => {
-        getTasks().then(setTasks)
-    } , []);
+    const {data} = useQuery("getTasks" , getTasks)
 
     return (
         <>
             <h1 className="text-center">Task Manager</h1>
             <hr/>
-            {!tasks ? <h5>Loading...</h5> : <HomeComponent tasks={tasks}/>}
+            {data && <HomeComponent tasks={data}/>}
 
             <LinkButton variant={ButtonTypes.Success} title={"Create Task"} link={"/createTask"}/>
         </>
     );
-};
+}
