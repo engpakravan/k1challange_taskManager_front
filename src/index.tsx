@@ -13,6 +13,7 @@ import {
 import {CreateTaskContainer} from "./containers/createTaskContainer";
 import {ROUTE_CREATE_TASK, ROUTE_HOME} from "./data/route";
 import {QueryClient, QueryClientProvider} from "react-query";
+import {Container} from "@material-ui/core";
 
 const queryClient = new QueryClient()
 
@@ -20,7 +21,7 @@ ReactDOM.render(
   <React.StrictMode>
       <QueryClientProvider client={queryClient} >
       <Router>
-          <div className="container bg-white p-3 mt-3 shadow-lg">
+          <Container fixed className={"mt-3"}>
               <Switch>
 
                   <Route path={ROUTE_HOME} exact><HomeContainer /></Route>
@@ -28,7 +29,7 @@ ReactDOM.render(
                   <Route path={ROUTE_CREATE_TASK}><CreateTaskContainer /></Route>
 
               </Switch>
-          </div>
+          </Container>
       </Router>
       </QueryClientProvider>
   </React.StrictMode>,
