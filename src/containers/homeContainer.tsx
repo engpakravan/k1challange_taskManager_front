@@ -5,6 +5,7 @@ import {getTasks, Task} from "../data";
 import {LinkButton, ButtonTypes} from "../components/UI/LinkButton";
 import {useQuery} from "react-query";
 import {LinearProgress, Typography} from "@material-ui/core";
+import {ROUTE_CREATE_TASK} from "../data/route";
 
 type Props = {
 
@@ -20,7 +21,7 @@ export function HomeContainer(props: Props) {
             {isLoading && <LinearProgress color={"primary"}/>}
             {data && <HomeComponent tasks={data}/>}
 
-            <LinkButton className={"mt-5"} variant={ButtonTypes.Success} title={"Create Task"} link={"/createTask"}/>
+            <LinkButton className={"mt-5"} variant={ButtonTypes.Success} title={"Create Task"} link={ROUTE_CREATE_TASK}/>
         </>
     );
 }

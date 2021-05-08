@@ -31,7 +31,7 @@ function Task({task , setEditTask}: Props) {
     const handleClick = () => setEditTask({status : true , id : task._id});
 
     return (
-        <Paper onClick={handleClick} className={classes.paper}>
+        <Paper onClick={handleClick} className={classes.paper} draggable>
             <Grid container spacing={2} >
                 <Grid item>
                     <Avatar alt={""} src={"https://media-exp1.licdn.com/dms/image/C4E03AQEZAZFJfpUb-Q/profile-displayphoto-shrink_400_400/0/1619871996062?e=1625702400&v=beta&t=9BHmL1hQtU0bnvcnI0DnE4vrSUpi0E3ea3KVuUpfR_w"}></Avatar>
