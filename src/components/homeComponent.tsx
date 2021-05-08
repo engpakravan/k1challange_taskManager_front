@@ -3,13 +3,16 @@ import {useState} from 'react';
 import {Task as ITask, TaskStatus} from "../data";
 import Task from "./UI/Task";
 import {EditTask} from "./Popup/edit-task/Edit";
-import {Chip, Grid, Typography} from "@material-ui/core";
+import {Chip, Grid} from "@material-ui/core";
 
 type Props = {
     tasks : Array<ITask>
 };
 
 export function HomeComponent(props: Props) {
+
+    const fetchTasks = (taskStatus : TaskStatus) => props.tasks.map(task => task.status === taskStatus && <Task setEditTask={setEdit} task={task} key={task._id}/>);
+
 
     const [edit , setEdit] = useState({
         status : false ,
@@ -23,16 +26,16 @@ export function HomeComponent(props: Props) {
 
             <Grid container spacing={3}>
                 <Grid item xs={12} sm={4} container justify={"center"}>
-                    <Grid container justify={"center"}><Chip color={"primary"} variant={"default"} label={"TODO"}/></Grid>
-                    { props.tasks.map(task => task.status === TaskStatus.TODO && <Task setEditTask={setEdit} task={task} key={task._id}/>) }
+                    <Grid container justify={"center"}><Chip color={"primary"} variant={"default"} label={TaskStatus.TODO}/></Grid>
+                    { fetchTasks(TaskStatus.TODO) }
                 </Grid>
                 <Grid item xs={12} sm={4} container justify={"center"}>
-                    <Grid container justify={"center"}><Chip color={"secondary"} variant={"outlined"} label={"Doing"}/></Grid>
-                    { props.tasks.map(task => task.status === TaskStatus.DOING && <Task setEditTask={setEdit} task={task} key={task._id}/>) }
+                    <Grid container justify={"center"}><Chip color={"secondary"} variant={"outlined"} label={TaskStatus.DOING}/></Grid>
+                    { fetchTasks(TaskStatus.DOING) }
                 </Grid>
                 <Grid item xs={12} sm={4} justify={"center"}>
-                    <Grid container justify={"center"}><Chip color={"primary"} variant={"outlined"} label={"Done"}/></Grid>
-                    { props.tasks.map(task => task.status === TaskStatus.DONE && <Task setEditTask={setEdit} task={task} key={task._id}/>) }
+                    <Grid container justify={"center"}><Chip color={"primary"} variant={"outlined"} label={TaskStatus.DONE}/></Grid>
+                    { fetchTasks(TaskStatus.DONE) }
                 </Grid>
             </Grid>
 

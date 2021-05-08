@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
         transition : ".3s ease" ,
         '&:hover' : {
             transition : ".3s ease" ,
-            backgroundColor : "#ececec" ,
+            backgroundColor : theme.palette.secondary.main ,
             cursor : "pointer"
         }
     }

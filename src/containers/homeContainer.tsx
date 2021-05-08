@@ -4,7 +4,7 @@ import {HomeComponent} from "../components/homeComponent";
 import {getTasks, Task} from "../data";
 import {LinkButton, ButtonTypes} from "../components/UI/LinkButton";
 import {useQuery} from "react-query";
-import {LinearProgress} from "@material-ui/core";
+import {LinearProgress, Typography} from "@material-ui/core";
 
 type Props = {
 
@@ -16,7 +16,6 @@ export function HomeContainer(props: Props) {
 
     return (
         <>
-            <h1 className="text-center">Task Manager</h1>
             <hr/>
             {isLoading && <LinearProgress color={"primary"}/>}
             {data && <HomeComponent tasks={data}/>}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
@@ -10,10 +10,8 @@ import {
     Switch,
     Route,
 } from "react-router-dom";
-import {CreateTaskContainer} from "./containers/createTaskContainer";
-import {ROUTE_CREATE_TASK, ROUTE_HOME} from "./data/route";
 import {QueryClient, QueryClientProvider} from "react-query";
-import {Container} from "@material-ui/core";
+import {MainContainer} from "./containers/Container";
 
 const queryClient = new QueryClient()
 
@@ -21,15 +19,7 @@ ReactDOM.render(
   <React.StrictMode>
       <QueryClientProvider client={queryClient} >
       <Router>
-          <Container fixed className={"mt-3"}>
-              <Switch>
-
-                  <Route path={ROUTE_HOME} exact><HomeContainer /></Route>
-
-                  <Route path={ROUTE_CREATE_TASK}><CreateTaskContainer /></Route>
-
-              </Switch>
-          </Container>
+          <MainContainer/>
       </Router>
       </QueryClientProvider>
   </React.StrictMode>,
