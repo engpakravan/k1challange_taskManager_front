@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import {Link} from 'react-router-dom'
+import {Button as MuiButton} from '@material-ui/core'
 
 export enum ButtonTypes {
     Primary = "primary" ,
@@ -19,6 +19,6 @@ type Props = {
 
 export function Button(props: Props) {
     return (
-        <button type={props.type} onClick={props.handler} className={`btn btn-${props.variant} ${props.className}`}>{props.title}</button>
+        <MuiButton variant={"outlined"} color={"secondary"} type={props.type} onClick={props.handler} className={props.className}>{props.title}</MuiButton>
     );
 };

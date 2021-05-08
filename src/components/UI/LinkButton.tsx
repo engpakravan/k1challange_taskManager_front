@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import {Link} from 'react-router-dom'
+import {Button} from "@material-ui/core";
 
 export enum ButtonTypes {
     Primary = "primary" ,
@@ -19,7 +20,7 @@ type Props = {
 export function LinkButton(props: Props) {
     return (
         <Link to={props.link}>
-            <button className={`btn btn-${props.variant} ${props.className}`}>{props.title}</button>
+            <Button variant={"contained"} className={"mt-2"} color={"secondary"} >{props.title}</Button>
         </Link>
     );
 };

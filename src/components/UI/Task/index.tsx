@@ -1,7 +1,7 @@
 import React , {memo} from 'react';
 import './task.css'
-import {Task as ITask, TaskStatus} from "../../../data";
-import {Avatar, Badge, Chip, Grid, makeStyles, Paper, Typography, withStyles} from "@material-ui/core";
+import { Task as ITask } from "../../../data";
+import { Avatar , Grid, makeStyles, Paper, Typography, withStyles} from "@material-ui/core";
 
 type Props = {
     task : ITask ,
@@ -12,7 +12,8 @@ const useStyles = makeStyles((theme) => ({
     paper : {
         margin : `${theme.spacing(1)}px 0 10px 0 `,
         padding : theme.spacing(2) ,
-        width : "100%" ,
+        width : 400 ,
+        overflowX : "hidden",
         transition : ".3s ease" ,
         '&:hover' : {
             transition : ".3s ease" ,
