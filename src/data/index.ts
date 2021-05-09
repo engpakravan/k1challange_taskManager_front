@@ -2,6 +2,10 @@ import axios from "axios";
 
 export const API_BASE_URL = `https://taskmanager-service.mahdipakravan.ir`;
 export interface CustomObject {[key : string] : any}
+export interface User {
+    username ?: string ,
+    password ?: string ,
+}
 export enum TaskStatus {
     TODO = 'todo',
     DOING = 'doing',

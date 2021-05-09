@@ -12,14 +12,19 @@ import {
 } from "react-router-dom";
 import {QueryClient, QueryClientProvider} from "react-query";
 import {MainContainer} from "./containers/Container";
+import { UserContext } from './store/contexts';
+import {getAuth} from "./data/auth";
 
 const queryClient = new QueryClient()
+
 
 ReactDOM.render(
   <React.StrictMode>
       <QueryClientProvider client={queryClient} >
       <Router>
-          <MainContainer/>
+          <UserContext.Provider value={getAuth()}>
+              <MainContainer/>
+          </UserContext.Provider>
       </Router>
       </QueryClientProvider>
   </React.StrictMode>,

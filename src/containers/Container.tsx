@@ -15,6 +15,8 @@ import {
     Typography
 } from "@material-ui/core";
 import {useEffect, useState} from "react";
+import {UserContext} from '../store/contexts'
+import {User} from "../data";
 
 type Props = {
 
@@ -66,6 +68,13 @@ export function MainContainer(props: Props) {
         <MuiThemeProvider theme={darkState ? themeDark : themeLight}>
             <Container fixed className={"mt-3"}>
                 <Grid container justify={"center"}><Switch checked={darkState} onChange={() => setDarkState(!darkState)} /></Grid>
+                <Grid container justify={"center"}>
+                    <UserContext.Consumer>
+                        {(userData : User) =>
+                            <Typography className="text-center" color={"primary"}>{`Welcome : ` + userData.username}</Typography>
+                        }
+                    </UserContext.Consumer>
+                </Grid>
                 <Grid container justify={"center"}><Typography className="text-center" color={"primary"}>Task Manager</Typography></Grid>
 
 
